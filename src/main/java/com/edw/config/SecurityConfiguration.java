@@ -30,10 +30,17 @@ public class SecurityConfiguration {
                 .userInfoEndpoint();
 
         http
+                .oauth2ResourceServer()
+                .jwt()
+                .jwtAuthenticationConverter(new CustomJwtAuthenticationConverter());
+
+        http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
         http
+                .csrf()
+                    .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/oauth2/**", "/login/**").permitAll()
                 .anyRequest()
