@@ -31,8 +31,7 @@ public class SecurityConfiguration {
 
         http
                 .oauth2ResourceServer()
-                .jwt()
-                .jwtAuthenticationConverter(new CustomJwtAuthenticationConverter());
+                .jwt();
 
         http
                 .sessionManagement()
